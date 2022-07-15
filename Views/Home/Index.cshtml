@@ -1,0 +1,36 @@
+﻿@model List<EmployeeManagementAsp.Models.Employee>
+
+
+@*PROCITAJ DOKUMENTACIJU U DETAILS.cshtml*@
+@*asp-append-version="true" -- koristimo da ucitavamo sliku sa servera SAMO AKO SE PROMJENI,inace citamo iz browser cachse-a*@
+@*https://www.youtube.com/watch?v=x8jNX1nb_og&list=PL6n9fhu94yhVkdrusLaQsfERmL_Jh4XmU&index=14&ab_channel=kudvenkat      --- ppodesavanje enviromenta na stagingu i prodikciji*@
+
+<html>
+    <head>
+        <title></title>
+    </head> 
+    <body>
+<div class="card-deck"  style="min-width:18rem; max-width:30.5%;">
+    @foreach (var employee in Model)
+    {
+        var photoPath = "~/images/" + (employee.PhotoPath ?? "noimage.jpg");
+        <div class="card m-3">
+            <div class="card-header">
+                <h3>@employee.Name</h3>
+            </div>
+
+            <img class="card-img-top imageThumbnail" src="@photoPath"
+                 asp-append-version="true" />
+
+            <div class="card-footer text-center">
+                <a asp-controller="home" asp-action="details" asp-route-id="@employee.Id"
+                   class="btn btn-primary m-1">View</a>
+                <a href="#" class="btn btn-primary m-1">Edit</a>
+                <a href="#" class="btn btn-danger m-1">Delete</a>
+            </div>
+        </div>
+    }
+      </div>
+      </body>
+  
+</html>
