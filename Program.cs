@@ -16,7 +16,7 @@ namespace EmployeeManagementAsp
         {
             CreateWebHostBuilder(args).Build().Run();
         }
-
+        //new development branch
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();
